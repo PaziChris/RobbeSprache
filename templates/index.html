@@ -260,7 +260,14 @@ select {
 
 .front {
     font-size: 34px;
+}
+
+.front.rtl {
     direction: rtl;
+}
+
+.front.ltr {
+    direction: ltr;
 }
 
 .stats {
@@ -382,6 +389,11 @@ Level 1
 🌙 Dark Mode
 </button>
 
+<select id="language" onchange="changeLanguage()">
+<option value="farsi">🇮🇷 Farsi</option>
+<option value="greek">🇬🇷 Griechisch</option>
+</select>
+
 <select id="category" onchange="loadCard()">
 <option value="all">▦ Alle Kategorien</option>
 <option value="greeting">Begrüßung</option>
@@ -420,7 +432,7 @@ Karte umdrehen
 
 <div class="controls">
 
-<button class="audio" onclick="speakFarsi()">
+<button class="audio" onclick="speakWord()">
 🔊 Aussprache
 </button>
 
@@ -481,6 +493,9 @@ let currentCard = null;
 
 let testMode = false;
 
+let selectedLanguage =
+    localStorage.getItem("selectedLanguage") || "farsi";
+
 let knownCards = JSON.parse(
     localStorage.getItem("knownCards") || "[]"
 );
@@ -502,24 +517,32 @@ const levels = [
     { xp: 1000, title: "Meisterrobbe", level: 5 }
 ];
 
+function getKnownKey() {
+    return "knownCards_" + selectedLanguage;
+}
+
+function loadKnownCards() {
+    knownCards = JSON.parse(
+        localStorage.getItem(getKnownKey()) || "[]"
+    );
+}
+
+function saveKnownCards() {
+    localStorage.setItem(
+        getKnownKey(),
+        JSON.stringify(knownCards)
+    );
+}
+
 function setSealMessage(title, text) {
-
-    document.getElementById("sealMessageTitle").innerText =
-        title;
-
-    document.getElementById("sealMessageText").innerText =
-        text;
+    document.getElementById("sealMessageTitle").innerText = title;
+    document.getElementById("sealMessageText").innerText = text;
 }
 
 function animateSeal(type) {
-
-    const seal =
-        document.getElementById("sealMascot");
-
+    const seal = document.getElementById("sealMascot");
     seal.classList.remove("happy", "sad");
-
     void seal.offsetWidth;
-
     seal.classList.add(type);
 
     setTimeout(() => {
@@ -527,19 +550,36 @@ function animateSeal(type) {
     }, 700);
 }
 
-function toggleTestMode() {
+function changeLanguage() {
+    selectedLanguage =
+        document.getElementById("language").value;
 
+    localStorage.setItem(
+        "selectedLanguage",
+        selectedLanguage
+    );
+
+    loadKnownCards();
+
+    setSealMessage(
+        "Sprache gewechselt!",
+        selectedLanguage === "greek"
+            ? "Griechisch ist jetzt aktiv 🇬🇷"
+            : "Farsi ist jetzt aktiv 🇮🇷"
+    );
+
+    loadCard();
+}
+
+function toggleTestMode() {
     testMode = !testMode;
 
     if (testMode) {
-
         setSealMessage(
             "Testmodus aktiv!",
             "Nur bekannte Karten 🧠"
         );
-
     } else {
-
         setSealMessage(
             "Normalmodus",
             "Alle Karten aktiv 🦭"
@@ -550,13 +590,8 @@ function toggleTestMode() {
 }
 
 function resetKnownCards() {
-
     knownCards = [];
-
-    localStorage.setItem(
-        "knownCards",
-        JSON.stringify(knownCards)
-    );
+    saveKnownCards();
 
     setSealMessage(
         "Test reset!",
@@ -565,12 +600,10 @@ function resetKnownCards() {
 }
 
 function checkDailyProgress() {
-
     const today =
         new Date().toDateString();
 
     if (progress.lastDay !== today) {
-
         const yesterday =
             new Date();
 
@@ -582,24 +615,18 @@ function checkDailyProgress() {
             progress.lastDay ===
             yesterday.toDateString()
         ) {
-
             progress.streak += 1;
-
         } else if (progress.lastDay !== "") {
-
             progress.streak = 1;
         }
 
         progress.dailyCorrect = 0;
-
         progress.lastDay = today;
-
         saveProgress();
     }
 
-    document.getElementById(
-        "streakDays"
-    ).innerText = progress.streak;
+    document.getElementById("streakDays").innerText =
+        progress.streak;
 
     const percent =
         Math.min(
@@ -607,20 +634,15 @@ function checkDailyProgress() {
             100
         );
 
-    document.getElementById(
-        "dailyBar"
-    ).style.width =
+    document.getElementById("dailyBar").style.width =
         percent + "%";
 
-    document.getElementById(
-        "dailyGoalText"
-    ).innerText =
+    document.getElementById("dailyGoalText").innerText =
         progress.dailyCorrect +
         " / 5 heute";
 }
 
 function toggleDarkMode() {
-
     document.body.classList.toggle("dark");
 
     localStorage.setItem(
@@ -630,7 +652,6 @@ function toggleDarkMode() {
 }
 
 function loadDarkMode() {
-
     const dark =
         localStorage.getItem("robbenDarkMode");
 
@@ -639,37 +660,35 @@ function loadDarkMode() {
     }
 }
 
-function loadProgress() {
+function getProgressKey() {
+    return "robbenProgress_" + selectedLanguage;
+}
 
+function loadProgress() {
     const saved =
-        localStorage.getItem("robbenProgress");
+        localStorage.getItem(getProgressKey());
 
     if (saved) {
         progress = JSON.parse(saved);
     }
 
     updateStats();
-
     checkDailyProgress();
 }
 
 function saveProgress() {
-
     localStorage.setItem(
-        "robbenProgress",
+        getProgressKey(),
         JSON.stringify(progress)
     );
 }
 
 function updateLevel() {
-
     let current = levels[0];
     let next = null;
 
     for (let i = 0; i < levels.length; i++) {
-
         if (progress.xp >= levels[i].xp) {
-
             current = levels[i];
             next = levels[i + 1] || null;
         }
@@ -682,7 +701,6 @@ function updateLevel() {
         "Level " + current.level;
 
     if (next) {
-
         const currentXP =
             progress.xp - current.xp;
 
@@ -703,7 +721,6 @@ function updateLevel() {
 }
 
 function updateStats() {
-
     document.getElementById("xp").innerText =
         progress.xp;
 
@@ -717,23 +734,20 @@ function updateStats() {
 }
 
 async function loadCard() {
-
     const category =
         document.getElementById("category").value;
 
-    let url = "/next";
+    let url = "/next/" + selectedLanguage;
 
     if (category !== "all") {
-        url = "/next/" + category;
+        url = "/next/" + selectedLanguage + "/" + category;
     }
 
     let tries = 0;
     let data = null;
 
     while (tries < 20) {
-
         const res = await fetch(url);
-
         data = await res.json();
 
         if (!testMode) {
@@ -747,6 +761,13 @@ async function loadCard() {
         tries++;
     }
 
+    if (testMode && data && !knownCards.includes(data.id)) {
+        setSealMessage(
+            "Keine Testkarten",
+            "Lerne zuerst Karten mit 👍"
+        );
+    }
+
     currentCard = data;
 
     document.getElementById("hint").innerText =
@@ -755,15 +776,25 @@ async function loadCard() {
     document.getElementById("answer").innerText =
         data.back || "";
 
-    document.getElementById("front").innerText =
+    const front =
+        document.getElementById("front");
+
+    front.innerText =
         data.front || "";
+
+    front.classList.remove("rtl", "ltr");
+
+    if (selectedLanguage === "farsi") {
+        front.classList.add("rtl");
+    } else {
+        front.classList.add("ltr");
+    }
 
     document.getElementById("card")
         .classList.remove("flipped");
 }
 
 function showAnswer() {
-
     if (currentCard == null) {
         return;
     }
@@ -772,8 +803,7 @@ function showAnswer() {
         .classList.toggle("flipped");
 }
 
-function speakFarsi() {
-
+function speakWord() {
     if (currentCard == null || !currentCard.hint) {
         return;
     }
@@ -783,22 +813,20 @@ function speakFarsi() {
     const utterance =
         new SpeechSynthesisUtterance(currentCard.hint);
 
-    utterance.lang = "de-DE";
+    utterance.lang =
+        selectedLanguage === "greek" ? "el-GR" : "de-DE";
+
     utterance.rate = 0.75;
 
     window.speechSynthesis.speak(utterance);
 }
 
 async function rate(value) {
-
     await fetch("/rate", {
-
         method: "POST",
-
         headers: {
             "Content-Type": "application/json"
         },
-
         body: JSON.stringify({
             rating: value,
             card: currentCard
@@ -806,19 +834,13 @@ async function rate(value) {
     });
 
     if (value === 1) {
-
         progress.xp += 10;
         progress.correct += 1;
         progress.dailyCorrect += 1;
 
         if (!knownCards.includes(currentCard.id)) {
-
             knownCards.push(currentCard.id);
-
-            localStorage.setItem(
-                "knownCards",
-                JSON.stringify(knownCards)
-            );
+            saveKnownCards();
         }
 
         animateSeal("happy");
@@ -827,9 +849,7 @@ async function rate(value) {
             "Sehr stark!",
             "Die Robbe ist stolz 🔥"
         );
-
     } else {
-
         progress.xp -= 2;
         progress.wrong += 1;
 
@@ -846,20 +866,19 @@ async function rate(value) {
     }
 
     saveProgress();
-
     updateStats();
-
     checkDailyProgress();
-
     loadCard();
 }
 
 if ("serviceWorker" in navigator) {
-
     navigator.serviceWorker.register(
         "/static/service-worker.js"
     );
 }
+
+document.getElementById("language").value =
+    selectedLanguage;
 
 setSealMessage(
     "Lets go!",
@@ -867,9 +886,8 @@ setSealMessage(
 );
 
 loadDarkMode();
-
+loadKnownCards();
 loadProgress();
-
 loadCard();
 
 </script>
