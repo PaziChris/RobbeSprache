@@ -1,0 +1,126 @@
+id;type;category;front;back;hint;example
+1;word;greeting;سلام;Hallo;salam;سلام دوست من
+2;word;farewell;خداحافظ;Tschüss;khodahafez;خداحافظ دوست من
+3;word;basic;بله;Ja;bale;بله درست است
+4;word;basic;نه;Nein;na;نه متشکرم
+5;word;basic;ممنون;Danke;mamnoon;ممنون از تو
+6;word;basic;لطفا;Bitte;lotfan;لطفا کمک کن
+7;word;food;آب;Wasser;ab;من آب می‌خواهم
+8;word;food;نان;Brot;nan;نان تازه خوب است
+9;word;food;چای;Tee;chay;من چای دوست دارم
+10;word;food;قهوه;Kaffee;ghahve;قهوه گرم است
+11;word;food;برنج;Reis;berenj;برنج خوشمزه است
+12;word;food;گوشت;Fleisch;goosht;گوشت تازه است
+13;word;food;سیب;Apfel;sib;سیب قرمز است
+14;word;food;موز;Banane;moz;موز شیرین است
+15;word;food;شیر;Milch;shir;شیر سرد است
+16;word;food;پنیر;Käse;panir;پنیر خوشمزه است
+17;word;daily;خانه;Haus;khane;خانه من بزرگ است
+18;word;daily;ماشین;Auto;mashin;ماشین جدید است
+19;word;daily;مدرسه;Schule;madrese;مدرسه نزدیک است
+20;word;daily;دانشگاه;Universität;daneshgah;دانشگاه بزرگ است
+21;word;daily;دوست;Freund;doost;دوست من خوب است
+22;word;daily;خانواده;Familie;khanevade;خانواده من اینجاست
+23;word;daily;کار;Arbeit;kar;کار سخت است
+24;word;daily;کتاب;Buch;ketab;کتاب جدید است
+25;word;daily;موبایل;Handy;mobile;موبایل من اینجاست
+26;word;daily;پول;Geld;pool;پول ندارم
+27;word;daily;زمان;Zeit;zaman;زمان سریع می‌گذرد
+28;word;daily;روز;Tag;rooz;امروز روز خوبی است
+29;word;daily;شب;Nacht;shab;شب آرام است
+30;word;daily;صبح;Morgen;sobh;صبح بخیر
+31;word;daily;مرد;Mann;mard;آن مرد بلند است
+32;word;daily;زن;Frau;zan;آن زن مهربان است
+33;word;daily;بچه;Kind;bache;بچه بازی می‌کند
+34;word;daily;شهر;Stadt;shahr;این شهر زیباست
+35;word;daily;خیابان;Straße;khiaban;خیابان شلوغ است
+36;word;daily;مغازه;Geschäft;maghaze;مغازه باز است
+37;word;daily;غذا;Essen;ghaza;غذا آماده است
+38;word;daily;لباس;Kleidung;lebas;لباس جدید دارم
+39;word;daily;کفش;Schuh;kafsh;کفش راحت است
+40;word;daily;میز;Tisch;miz;کتاب روی میز است
+41;word;daily;صندلی;Stuhl;sandali;صندلی راحت است
+42;word;daily;پنجره;Fenster;panjere;پنجره باز است
+43;word;daily;در;Tür;dar;در بسته است
+44;word;daily;اتاق;Zimmer;otagh;اتاق تمیز است
+45;word;daily;ساعت;Uhr;saat;ساعت چند است
+46;verb;basic;رفتن;gehen;raftan;من به خانه می‌روم
+47;verb;basic;آمدن;kommen;amadan;او فردا می‌آید
+48;verb;basic;خوردن;essen;khordan;من نان می‌خورم
+49;verb;basic;نوشیدن;trinken;nooshidan;او آب می‌نوشد
+50;verb;basic;دیدن;sehen;didan;من فیلم می‌بینم
+51;verb;basic;شنیدن;hören;shenidan;من موسیقی می‌شنوم
+52;verb;basic;گفتن;sagen;goftan;او حقیقت را گفت
+53;verb;basic;خواندن;lesen;khandan;من کتاب می‌خوانم
+54;verb;basic;نوشتن;schreiben;neveshtan;او نامه می‌نویسد
+55;verb;basic;داشتن;haben;dashtan;من ماشین دارم
+56;verb;basic;خواستن;wollen;khastan;من غذا می‌خواهم
+57;verb;basic;دوست داشتن;mögen;doost dashtan;من چای دوست دارم
+58;verb;basic;فهمیدن;verstehen;fahmidan;من فارسی می‌فهمم
+59;verb;basic;یاد گرفتن;lernen;yad gereftan;من فارسی یاد می‌گیرم
+60;verb;basic;کار کردن;arbeiten;kar kardan;او زیاد کار می‌کند
+61;verb;basic;خوابیدن;schlafen;khabidan;بچه خوابیده است
+62;verb;basic;بازی کردن;spielen;bazi kardan;آنها فوتبال بازی می‌کنند
+63;verb;basic;خندیدن;lachen;khandidan;او بلند می‌خندد
+64;verb;basic;گریه کردن;weinen;gerye kardan;بچه گریه می‌کند
+65;verb;basic;دویدن;rennen;davidan;او سریع می‌دود
+66;verb;basic;نشستن;sitzen;neshastan;من روی صندلی نشسته‌ام
+67;verb;basic;ایستادن;stehen;istadan;او کنار در ایستاده است
+68;verb;basic;باز کردن;öffnen;baz kardan;در را باز کن
+69;verb;basic;بستن;schließen;bastan;پنجره را ببند
+70;verb;basic;کمک کردن;helfen;komak kardan;او به من کمک کرد
+71;verb;basic;خریدن;kaufen;kharidan;من نان خریدم
+72;verb;basic;فروختن;verkaufen;forookhtan;او ماشین فروخت
+73;verb;basic;گرفتن;nehmen;gereftan;کتاب را گرفتم
+74;verb;basic;دادن;geben;dadan;او پول داد
+75;verb;basic;ماندن;bleiben;mandan;من خانه می‌مانم
+76;verb;basic;شروع کردن;beginnen;shoroo kardan;کلاس شروع شد
+77;verb;basic;تمام کردن;beenden;tamam kardan;من کار را تمام کردم
+78;verb;basic;پرسیدن;fragen;porsidan;او سوال پرسید
+79;verb;basic;جواب دادن;antworten;javab dadan;من جواب دادم
+80;verb;basic;زندگی کردن;leben;zendegi kardan;ما در وین زندگی می‌کنیم
+81;word;emotion;خوشحال;glücklich;khoshhal;من خوشحال هستم
+82;word;emotion;غمگین;traurig;ghamgin;او غمگین است
+83;word;emotion;عصبانی;wütend;asabani;او عصبانی شد
+84;word;emotion;خسته;müde;khaste;من خسته هستم
+85;word;emotion;گرسنه;hungrig;gorosne;من گرسنه‌ام
+86;word;emotion;تشنه;durstig;teshne;او تشنه است
+87;word;emotion;ترسیده;ängstlich;tarside;بچه ترسیده است
+88;word;emotion;آرام;ruhig;aram;هوا آرام است
+89;word;place;ایران;Iran;iran;من اهل ایران هستم
+90;word;place;آلمان;Deutschland;alman;آلمان بزرگ است
+91;word;place;اتریش;Österreich;otrich;من در اتریش زندگی می‌کنم
+92;word;place;وین;Wien;vien;وین زیباست
+93;word;place;بازار;Markt;bazar;بازار شلوغ است
+94;word;place;رستوران;Restaurant;restaurant;رستوران خوب است
+95;word;place;بیمارستان;Krankenhaus;bimarestan;بیمارستان نزدیک است
+96;word;place;فرودگاه;Flughafen;foroodgah;فرودگاه بزرگ است
+97;word;place;پارک;Park;park;پارک آرام است
+98;word;place;بانک;Bank;bank;بانک بسته است
+99;word;place;ایستگاه;Station;istgah;ایستگاه اینجاست
+100;word;place;هتل;Hotel;hotel;هتل گران است
+101;sentence;sentences;من فارسی یاد می‌گیرم;Ich lerne Farsi;man farsi yad migiram;من فارسی یاد می‌گیرم
+102;sentence;sentences;حال شما چطور است؟;Wie geht es Ihnen?;hale shoma chetor ast;سلام، حال شما چطور است؟
+103;sentence;sentences;من آب می‌خواهم;Ich möchte Wasser;man ab mikhaham;لطفا، من آب می‌خواهم
+104;sentence;sentences;این خانه بزرگ است;Dieses Haus ist groß;in khane bozorg ast;این خانه بزرگ است
+105;sentence;sentences;من خسته هستم;Ich bin müde;man khaste hastam;امروز من خسته هستم
+106;sentence;sentences;من گرسنه هستم;Ich bin hungrig;man gorosne hastam;من خیلی گرسنه هستم
+107;sentence;sentences;من تشنه هستم;Ich bin durstig;man teshne hastam;بعد از ورزش تشنه هستم
+108;sentence;sentences;تو کجا هستی؟;Wo bist du?;to koja hasti;سلام، تو کجا هستی؟
+109;sentence;sentences;من در خانه هستم;Ich bin zuhause;man dar khane hastam;امروز من در خانه هستم
+110;sentence;sentences;من به مدرسه می‌روم;Ich gehe zur Schule;man be madrese miravam;صبح من به مدرسه می‌روم
+111;sentence;sentences;او چای می‌نوشد;Er/Sie trinkt Tee;u chay minushad;او هر روز چای می‌نوشد
+112;sentence;sentences;من کتاب می‌خوانم;Ich lese ein Buch;man ketab mikhanam;شب من کتاب می‌خوانم
+113;sentence;sentences;این غذا خوشمزه است;Dieses Essen ist lecker;in ghaza khoshmaze ast;این غذا خیلی خوشمزه است
+114;sentence;sentences;من پول ندارم;Ich habe kein Geld;man pool nadaram;امروز من پول ندارم
+115;sentence;sentences;لطفا کمک کن;Bitte hilf mir;lotfan komak kon;لطفا به من کمک کن
+116;sentence;sentences;من متوجه نمی‌شوم;Ich verstehe nicht;man motevajeh nemishavam;ببخشید، من متوجه نمی‌شوم
+117;sentence;sentences;آیا انگلیسی صحبت می‌کنی؟;Sprichst du Englisch?;aya englisi sohbat mikoni;آیا انگلیسی صحبت می‌کنی؟
+118;sentence;sentences;من فارسی کم صحبت می‌کنم;Ich spreche wenig Farsi;man farsi kam sohbat mikonam;من فارسی کم صحبت می‌کنم
+119;sentence;sentences;اسم من نیکوس است;Mein Name ist Nikos;esme man Nikos ast;سلام، اسم من نیکوس است
+120;sentence;sentences;از دیدنت خوشحالم;Schön dich zu sehen;az didanet khoshhalam;سلام، از دیدنت خوشحالم
+121;sentence;sentences;امروز هوا خوب است;Heute ist das Wetter gut;emrooz hava khoob ast;امروز هوا خیلی خوب است
+122;sentence;sentences;من کار دارم;Ich habe Arbeit zu tun;man kar daram;امروز من کار دارم
+123;sentence;sentences;این خیلی مهم است;Das ist sehr wichtig;in kheili mohem ast;این موضوع خیلی مهم است
+124;sentence;sentences;من نمی‌دانم;Ich weiß nicht;man nemidanam;ببخشید، من نمی‌دانم
+125;sentence;sentences;بعدا می‌بینمت;Ich sehe dich später;badam mibinamet;خداحافظ، بعدا می‌بینمت

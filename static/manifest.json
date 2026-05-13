@@ -1,0 +1,9 @@
+{
+  "name": "Robben Lernen",
+  "short_name": "Robbe",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4f6f8",
+  "theme_color": "#2563eb",
+  "icons": []
+}
