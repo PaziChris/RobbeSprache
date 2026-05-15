@@ -3,17 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Robben Lernen</title>
+<title>Seal Talk</title>
 
 <link rel="manifest" href="/static/manifest.json">
-
 <meta name="theme-color" content="#2563eb">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Robbe">
 
 <style>
-
 :root {
     --bg: #f4f6f8;
     --card: #ffffff;
@@ -54,12 +51,108 @@ header {
     padding: 20px;
 }
 
-.mascot-box {
+.login-box,
+.mascot-box,
+.level-box,
+.stats {
     background: var(--card);
     border-radius: 28px;
     padding: 18px;
     margin-bottom: 18px;
     box-shadow: 0 8px 22px var(--shadow);
+}
+
+.login-title,
+.level-title {
+    font-size: 28px;
+    font-weight: 900;
+}
+
+.login-sub,
+.level-sub {
+    color: var(--sub);
+    margin-top: 6px;
+    font-size: 17px;
+}
+
+input,
+select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 16px;
+    font-size: 18px;
+    border-radius: 18px;
+    border: none;
+    margin-bottom: 12px;
+    background: #e5e7eb;
+    color: #111827;
+}
+
+body.dark input,
+body.dark select {
+    background: #1e293b;
+    color: #f8fafc;
+}
+
+button {
+    border: none;
+    border-radius: 18px;
+    padding: 17px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.primary { background: var(--primary); color: white; }
+.audio { background: #7c3aed; color: white; }
+.good { background: #22c55e; color: white; }
+.bad { background: #ef4444; color: white; }
+.secondary { background: #e5e7eb; color: #111827; }
+.dark-button { background: #111827; color: white; }
+
+.login-actions,
+.controls,
+.answer-controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.dark-button,
+.flip-button,
+.audio-button {
+    width: 100%;
+    margin-bottom: 12px;
+}
+
+.error {
+    color: #ef4444;
+    font-weight: 700;
+    margin-top: 12px;
+}
+
+.user-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--card);
+    border-radius: 18px;
+    padding: 12px 14px;
+    margin-bottom: 16px;
+    box-shadow: 0 6px 18px var(--shadow);
+    color: var(--sub);
+    font-size: 15px;
+}
+
+.user-row strong {
+    color: var(--text);
+}
+
+.small-button {
+    padding: 10px 14px;
+    font-size: 14px;
+    border-radius: 14px;
 }
 
 .mascot-layout {
@@ -91,26 +184,6 @@ header {
     margin-bottom: 5px;
 }
 
-.level-box,
-.stats {
-    background: var(--card);
-    border-radius: 22px;
-    padding: 18px;
-    margin-bottom: 18px;
-    box-shadow: 0 8px 22px var(--shadow);
-}
-
-.level-title {
-    font-size: 28px;
-    font-weight: 800;
-}
-
-.level-sub {
-    color: var(--sub);
-    margin-top: 6px;
-    font-size: 17px;
-}
-
 .bar {
     width: 100%;
     height: 16px;
@@ -120,7 +193,8 @@ header {
     overflow: hidden;
 }
 
-.bar-fill {
+.bar-fill,
+.mini-fill {
     height: 100%;
     width: 0%;
     background: var(--primary);
@@ -152,64 +226,9 @@ header {
     margin-bottom: 8px;
 }
 
-.mini-fill {
-    height: 100%;
-    width: 0%;
-    background: var(--primary);
-    transition: width 0.4s;
-}
-
 .mini-text {
     font-size: 14px;
     color: var(--sub);
-}
-
-button {
-    border: none;
-    border-radius: 18px;
-    padding: 17px;
-    font-size: 18px;
-    font-weight: 700;
-    cursor: pointer;
-}
-
-.dark-button,
-.reset,
-.flip-button,
-.audio-button {
-    width: 100%;
-    margin-bottom: 12px;
-}
-
-.primary { background: var(--primary); color: white; }
-.audio { background: #7c3aed; color: white; }
-.good { background: #22c55e; color: white; }
-.bad { background: #ef4444; color: white; }
-.secondary { background: #e5e7eb; color: #111827; }
-.dark-button { background: #111827; color: white; }
-
-.controls {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-}
-
-.answer-controls {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-top: 12px;
-}
-
-select {
-    width: 100%;
-    padding: 16px;
-    font-size: 18px;
-    border-radius: 18px;
-    border: none;
-    margin-bottom: 18px;
-    background: var(--card);
-    color: var(--text);
 }
 
 .card-scene {
@@ -262,13 +281,8 @@ select {
     font-size: 34px;
 }
 
-.front.rtl {
-    direction: rtl;
-}
-
-.front.ltr {
-    direction: ltr;
-}
+.front.rtl { direction: rtl; }
+.front.ltr { direction: ltr; }
 
 .stats {
     display: grid;
@@ -284,18 +298,43 @@ select {
     margin-top: 4px;
 }
 
+.leader-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(120,120,120,0.18);
+    font-size: 16px;
+}
+
+.leader-rank {
+    font-weight: 900;
+    margin-right: 10px;
+}
+
+.leader-xp {
+    color: var(--primary);
+    font-weight: 800;
+}
+
+.version {
+    color: var(--sub);
+    font-size: 13px;
+    margin-top: 18px;
+    margin-bottom: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
 @keyframes sealIdle {
     0%,100% { transform: translateY(0) rotate(-1deg); }
     50% { transform: translateY(-7px) rotate(1deg); }
 }
 
-.mascot-img.happy {
-    animation: happySeal 0.6s ease;
-}
-
-.mascot-img.sad {
-    animation: sadSeal 0.45s ease;
-}
+.mascot-img.happy { animation: happySeal 0.6s ease; }
+.mascot-img.sad { animation: sadSeal 0.45s ease; }
 
 @keyframes happySeal {
     0% { transform: scale(1); }
@@ -310,195 +349,161 @@ select {
     50% { transform: translateX(8px); }
     75% { transform: translateX(-5px); }
 }
-
 </style>
 </head>
 
 <body>
 
 <header>
-🦭 Robben Lernen
+
+<div style="font-size:28px;font-weight:900;">
+🦭 Seal Talk
+</div>
+
+<div style="
+    font-size:13px;
+    font-weight:500;
+    opacity:0.75;
+    margin-top:4px;
+">
+Speak smooth. Learn fast.
+</div>
+
 </header>
 
 <main class="app">
 
+<section id="loginView" class="login-box">
+    <div class="login-title">Willkommen zurück</div>
+    <div class="login-sub">Melde dich an oder erstelle einen Robben-Account.</div>
+
+    <input id="usernameInput" placeholder="Benutzername">
+    <input id="passwordInput" placeholder="Passwort" type="password">
+
+    <div class="login-actions">
+        <button class="primary" onclick="loginUser()">Login</button>
+        <button class="secondary" onclick="registerUser()">Registrieren</button>
+    </div>
+
+    <div id="loginError" class="error"></div>
+</section>
+
+<section id="appView" class="hidden">
+
+<div class="user-row">
+    <div>Eingeloggt als <strong id="currentUsername">-</strong></div>
+    <button class="secondary small-button" onclick="logoutUser()">Logout</button>
+</div>
+
 <section class="mascot-box">
+    <div class="mascot-layout">
+        <img id="sealMascot" class="mascot-img" src="/static/seal-gang.png" alt="Robbe">
 
-<div class="mascot-layout">
-
-<img
-    id="sealMascot"
-    class="mascot-img"
-    src="/static/seal-gang.png"
-    alt="Robbe"
->
-
-<div class="speech">
-
-<strong id="sealMessageTitle">
-Lets go!
-</strong>
-
-<span id="sealMessageText">
-Weiter lernen = stärker werden 💜
-</span>
-
-</div>
-
-</div>
-
+        <div class="speech">
+            <strong id="sealMessageTitle">Seal Talk</strong>
+<span id="sealMessageText">Speak smooth. Learn fast.</span>
+        </div>
+    </div>
 </section>
 
 <section class="level-box">
+    <div id="sealTitle" class="level-title">Babyrobbe</div>
+    <div id="sealLevel" class="level-sub">Level 1</div>
 
-<div id="sealTitle" class="level-title">
-Babyrobbe
-</div>
+    <div class="bar">
+        <div class="bar-fill" id="xpBar"></div>
+    </div>
 
-<div id="sealLevel" class="level-sub">
-Level 1
-</div>
-
-<div class="bar">
-<div class="bar-fill" id="xpBar"></div>
-</div>
-
-<div id="nextLevelText" class="level-sub">
-100 XP bis Schwimmrobbe
-</div>
-
+    <div id="nextLevelText" class="level-sub">100 XP bis Schwimmrobbe</div>
 </section>
 
 <section class="streak-mini">
+    <div class="streak-top">🔥 <span id="streakDays">0</span> Tage</div>
 
-<div class="streak-top">
-🔥 <span id="streakDays">0</span> Tage
-</div>
+    <div class="mini-bar">
+        <div class="mini-fill" id="dailyBar"></div>
+    </div>
 
-<div class="mini-bar">
-<div class="mini-fill" id="dailyBar"></div>
-</div>
-
-<div id="dailyGoalText" class="mini-text">
-0 / 5 heute
-</div>
-
+    <div id="dailyGoalText" class="mini-text">0 / 5 heute</div>
 </section>
 
-<button class="dark-button" onclick="toggleDarkMode()">
-🌙 Dark Mode
-</button>
+<button class="dark-button" onclick="toggleDarkMode()">🌙 Dark Mode</button>
 
 <select id="language" onchange="changeLanguage()">
-<option value="farsi">🇮🇷 Farsi</option>
-<option value="greek">🇬🇷 Griechisch</option>
+    <option value="farsi">🇮🇷 Farsi</option>
+    <option value="greek">🇬🇷 Griechisch</option>
 </select>
 
 <select id="category" onchange="loadCard()">
-<option value="all">▦ Alle Kategorien</option>
-<option value="greeting">Begrüßung</option>
-<option value="farewell">Verabschiedung</option>
-<option value="food">Essen/Trinken</option>
-<option value="basic">Basis</option>
-<option value="daily">Alltag</option>
-<option value="sentences">Ganze Sätze</option>
+    <option value="all">▦ Alle Kategorien</option>
+    <option value="greeting">Begrüßung</option>
+    <option value="farewell">Verabschiedung</option>
+    <option value="food">Essen/Trinken</option>
+    <option value="basic">Basis</option>
+    <option value="daily">Alltag</option>
+    <option value="sentences">Ganze Sätze</option>
 </select>
 
 <section class="card-scene">
+    <div class="card" id="card">
+        <div class="card-face card-front">
+            <div id="hint" class="hint">Lädt...</div>
+        </div>
 
-<div class="card" id="card">
-
-<div class="card-face card-front">
-
-<div id="hint" class="hint"></div>
-
-</div>
-
-<div class="card-face card-back">
-
-<div id="answer" class="answer"></div>
-
-<div id="front" class="front"></div>
-
-</div>
-
-</div>
-
+        <div class="card-face card-back">
+            <div id="answer" class="answer"></div>
+            <div id="front" class="front"></div>
+        </div>
+    </div>
 </section>
 
-<button class="primary flip-button" onclick="showAnswer()">
-Karte umdrehen
-</button>
+<button class="primary flip-button" onclick="showAnswer()">Karte umdrehen</button>
 
 <div class="controls">
-
-<button class="audio" onclick="speakWord()">
-🔊 Aussprache
-</button>
-
-<button class="primary" onclick="loadCard()">
-↻ Neue Karte
-</button>
-
+    <button class="audio" onclick="speakWord()">🔊 Aussprache</button>
+    <button class="primary" onclick="loadCard()">↻ Neue Karte</button>
 </div>
 
 <div class="answer-controls">
-
-<button class="good" onclick="rate(1)">
-👍 Richtig
-</button>
-
-<button class="bad" onclick="rate(3)">
-👎 Falsch
-</button>
-
+    <button class="good" onclick="rate(1)">👍 Richtig</button>
+    <button class="bad" onclick="rate(3)">👎 Falsch</button>
 </div>
 
 <div class="controls">
-
-<button class="secondary" onclick="toggleTestMode()">
-🧠 Testmodus
-</button>
-
-<button class="secondary" onclick="resetKnownCards()">
-♻️ Test reset
-</button>
-
+    <button class="secondary" onclick="toggleTestMode()">🧠 Testmodus</button>
+    <button class="secondary" onclick="resetKnownCards()">♻️ Test reset</button>
 </div>
+
+<section class="level-box">
+    <div class="level-title">🏆 Leaderboard</div>
+
+    <button class="secondary" style="width:100%;margin-top:12px;" onclick="loadLeaderboard()">
+        Ranking aktualisieren
+    </button>
+
+    <div id="leaderboard" style="margin-top:16px;text-align:left;">
+        Lädt Ranking...
+    </div>
+</section>
 
 <section class="stats">
+    <div>⭐ XP<span id="xp" class="stat-number">0</span></div>
+    <div>✅ Richtig<span id="correct" class="stat-number">0</span></div>
+    <div>❌ Falsch<span id="wrong" class="stat-number">0</span></div>
+</section>
 
-<div>
-⭐ XP
-<span id="xp" class="stat-number">0</span>
-</div>
-
-<div>
-✅ Richtig
-<span id="correct" class="stat-number">0</span>
-</div>
-
-<div>
-❌ Falsch
-<span id="wrong" class="stat-number">0</span>
-</div>
+<div class="version">v1.1 SealTalk</div>
 
 </section>
 
 </main>
 
 <script>
-
 let currentCard = null;
-
 let testMode = false;
+let selectedLanguage = localStorage.getItem("selectedLanguage") || "farsi";
 
-let selectedLanguage =
-    localStorage.getItem("selectedLanguage") || "farsi";
-
-let knownCards = JSON.parse(
-    localStorage.getItem("knownCards") || "[]"
-);
+let knownCards = [];
 
 let progress = {
     xp: 0,
@@ -506,7 +511,8 @@ let progress = {
     wrong: 0,
     streak: 0,
     dailyCorrect: 0,
-    lastDay: ""
+    lastDay: "",
+    knownCards: []
 };
 
 const levels = [
@@ -517,23 +523,163 @@ const levels = [
     { xp: 1000, title: "Meisterrobbe", level: 5 }
 ];
 
-function getKnownKey() {
-    return "knownCards_" + selectedLanguage;
+document.addEventListener("keydown", function(event) {
+    if (event.key === "Enter" && !document.getElementById("loginView").classList.contains("hidden")) {
+        loginUser();
+    }
+});
+
+async function apiPost(url, data) {
+    const res = await fetch(url, {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(data)
+    });
+
+    const json = await res.json();
+
+    if (!res.ok) {
+        throw new Error(json.message || "Fehler");
+    }
+
+    return json;
 }
 
-function loadKnownCards() {
-    knownCards = JSON.parse(
-        localStorage.getItem(getKnownKey()) || "[]"
-    );
+async function registerUser() {
+    const username = document.getElementById("usernameInput").value;
+    const password = document.getElementById("passwordInput").value;
+
+    try {
+        const data = await apiPost("/api/register", {
+            username: username,
+            password: password
+        });
+
+        showApp(data.username);
+
+        setSealMessage(
+            "Account erstellt!",
+            "Willkommen in der Robben-Crew 🦭"
+        );
+
+    } catch (err) {
+        document.getElementById("loginError").innerText = err.message;
+    }
 }
 
-function saveKnownCards() {
-    localStorage.setItem(
-        getKnownKey(),
-        JSON.stringify(knownCards)
-    );
+async function loginUser() {
+    const username = document.getElementById("usernameInput").value;
+    const password = document.getElementById("passwordInput").value;
+
+    try {
+        const data = await apiPost("/api/login", {
+            username: username,
+            password: password
+        });
+
+        showApp(data.username);
+
+        setSealMessage(
+            "Willkommen zurück!",
+            "Die Robbe war bereit 🔥"
+        );
+
+    } catch (err) {
+        document.getElementById("loginError").innerText = err.message;
+    }
 }
 
+async function logoutUser() {
+    await fetch("/api/logout", { method: "POST" });
+
+    document.getElementById("appView").classList.add("hidden");
+    document.getElementById("loginView").classList.remove("hidden");
+}
+
+async function checkLogin() {
+    const res = await fetch("/api/me");
+    const data = await res.json();
+
+    if (data.logged_in) {
+        showApp(data.username);
+    } else {
+        document.getElementById("loginView").classList.remove("hidden");
+        document.getElementById("appView").classList.add("hidden");
+    }
+}
+
+async function showApp(username) {
+    document.getElementById("currentUsername").innerText = username;
+
+    document.getElementById("loginView").classList.add("hidden");
+    document.getElementById("appView").classList.remove("hidden");
+
+    document.getElementById("language").value = selectedLanguage;
+
+    await loadServerProgress();
+    await loadCard();
+    await loadLeaderboard();
+}
+
+async function loadServerProgress() {
+    const res = await fetch("/api/progress/" + selectedLanguage);
+
+    if (!res.ok) {
+        return;
+    }
+
+    const data = await res.json();
+
+    progress = {
+        xp: data.xp || 0,
+        correct: data.correct || 0,
+        wrong: data.wrong || 0,
+        streak: data.streak || 0,
+        dailyCorrect: data.dailyCorrect || 0,
+        lastDay: data.lastDay || "",
+        knownCards: data.knownCards || []
+    };
+
+    knownCards = progress.knownCards || [];
+
+    updateStats();
+    checkDailyProgress();
+}
+
+async function saveServerProgress() {
+    progress.knownCards = knownCards;
+
+    await fetch("/api/progress/" + selectedLanguage, {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(progress)
+    });
+}
+
+const sealQuotes = [
+
+    "No stress. Just progress.",
+
+    "Speak smooth. Learn fast.",
+
+    "One word closer."
+
+];
+
+function rotateSealQuote() {
+
+    const randomQuote =
+        sealQuotes[
+            Math.floor(
+                Math.random() *
+                sealQuotes.length
+            )
+        ];
+
+    document.getElementById(
+        "sealMessageText"
+    ).innerText = randomQuote;
+}
 function setSealMessage(title, text) {
     document.getElementById("sealMessageTitle").innerText = title;
     document.getElementById("sealMessageText").innerText = text;
@@ -550,16 +696,11 @@ function animateSeal(type) {
     }, 700);
 }
 
-function changeLanguage() {
-    selectedLanguage =
-        document.getElementById("language").value;
+async function changeLanguage() {
+    selectedLanguage = document.getElementById("language").value;
+    localStorage.setItem("selectedLanguage", selectedLanguage);
 
-    localStorage.setItem(
-        "selectedLanguage",
-        selectedLanguage
-    );
-
-    loadKnownCards();
+    await loadServerProgress();
 
     setSealMessage(
         "Sprache gewechselt!",
@@ -568,30 +709,26 @@ function changeLanguage() {
             : "Farsi ist jetzt aktiv 🇮🇷"
     );
 
-    loadCard();
+    await loadCard();
+    await loadLeaderboard();
 }
 
 function toggleTestMode() {
     testMode = !testMode;
 
-    if (testMode) {
-        setSealMessage(
-            "Testmodus aktiv!",
-            "Nur bekannte Karten 🧠"
-        );
-    } else {
-        setSealMessage(
-            "Normalmodus",
-            "Alle Karten aktiv 🦭"
-        );
-    }
+    setSealMessage(
+        testMode ? "Testmodus aktiv!" : "Normalmodus",
+        testMode ? "Nur bekannte Karten 🧠" : "Alle Karten aktiv 🦭"
+    );
 
     loadCard();
 }
 
-function resetKnownCards() {
+async function resetKnownCards() {
     knownCards = [];
-    saveKnownCards();
+    progress.knownCards = [];
+
+    await saveServerProgress();
 
     setSealMessage(
         "Test reset!",
@@ -600,21 +737,13 @@ function resetKnownCards() {
 }
 
 function checkDailyProgress() {
-    const today =
-        new Date().toDateString();
+    const today = new Date().toDateString();
 
     if (progress.lastDay !== today) {
-        const yesterday =
-            new Date();
+        const yesterday = new Date();
+        yesterday.setDate(yesterday.getDate() - 1);
 
-        yesterday.setDate(
-            yesterday.getDate() - 1
-        );
-
-        if (
-            progress.lastDay ===
-            yesterday.toDateString()
-        ) {
+        if (progress.lastDay === yesterday.toDateString()) {
             progress.streak += 1;
         } else if (progress.lastDay !== "") {
             progress.streak = 1;
@@ -622,24 +751,15 @@ function checkDailyProgress() {
 
         progress.dailyCorrect = 0;
         progress.lastDay = today;
-        saveProgress();
+        saveServerProgress();
     }
 
-    document.getElementById("streakDays").innerText =
-        progress.streak;
+    document.getElementById("streakDays").innerText = progress.streak;
 
-    const percent =
-        Math.min(
-            (progress.dailyCorrect / 5) * 100,
-            100
-        );
-
-    document.getElementById("dailyBar").style.width =
-        percent + "%";
-
+    const percent = Math.min((progress.dailyCorrect / 5) * 100, 100);
+    document.getElementById("dailyBar").style.width = percent + "%";
     document.getElementById("dailyGoalText").innerText =
-        progress.dailyCorrect +
-        " / 5 heute";
+        progress.dailyCorrect + " / 5 heute";
 }
 
 function toggleDarkMode() {
@@ -652,35 +772,11 @@ function toggleDarkMode() {
 }
 
 function loadDarkMode() {
-    const dark =
-        localStorage.getItem("robbenDarkMode");
+    const dark = localStorage.getItem("robbenDarkMode");
 
     if (dark === "true") {
         document.body.classList.add("dark");
     }
-}
-
-function getProgressKey() {
-    return "robbenProgress_" + selectedLanguage;
-}
-
-function loadProgress() {
-    const saved =
-        localStorage.getItem(getProgressKey());
-
-    if (saved) {
-        progress = JSON.parse(saved);
-    }
-
-    updateStats();
-    checkDailyProgress();
-}
-
-function saveProgress() {
-    localStorage.setItem(
-        getProgressKey(),
-        JSON.stringify(progress)
-    );
 }
 
 function updateLevel() {
@@ -694,48 +790,65 @@ function updateLevel() {
         }
     }
 
-    document.getElementById("sealTitle").innerText =
-        current.title;
-
-    document.getElementById("sealLevel").innerText =
-        "Level " + current.level;
+    document.getElementById("sealTitle").innerText = current.title;
+    document.getElementById("sealLevel").innerText = "Level " + current.level;
 
     if (next) {
-        const currentXP =
-            progress.xp - current.xp;
+        const currentXP = progress.xp - current.xp;
+        const neededXP = next.xp - current.xp;
+        const percent = Math.min((currentXP / neededXP) * 100, 100);
 
-        const neededXP =
-            next.xp - current.xp;
-
-        const percent =
-            Math.min((currentXP / neededXP) * 100, 100);
-
-        document.getElementById("xpBar").style.width =
-            percent + "%";
-
+        document.getElementById("xpBar").style.width = percent + "%";
         document.getElementById("nextLevelText").innerText =
-            (next.xp - progress.xp) +
-            " XP bis " +
-            next.title;
+            (next.xp - progress.xp) + " XP bis " + next.title;
+    } else {
+        document.getElementById("xpBar").style.width = "100%";
+        document.getElementById("nextLevelText").innerText =
+            "Maximale Tauchstufe erreicht";
     }
 }
 
 function updateStats() {
-    document.getElementById("xp").innerText =
-        progress.xp;
-
-    document.getElementById("correct").innerText =
-        progress.correct;
-
-    document.getElementById("wrong").innerText =
-        progress.wrong;
+    document.getElementById("xp").innerText = progress.xp;
+    document.getElementById("correct").innerText = progress.correct;
+    document.getElementById("wrong").innerText = progress.wrong;
 
     updateLevel();
 }
 
+async function loadLeaderboard() {
+    const board = document.getElementById("leaderboard");
+    board.innerHTML = "Lädt Ranking...";
+
+    const res = await fetch("/api/leaderboard/" + selectedLanguage);
+    const data = await res.json();
+
+    board.innerHTML = "";
+
+    if (!data || data.length === 0) {
+        board.innerHTML = "Noch kein Ranking vorhanden.";
+        return;
+    }
+
+    data.forEach((user, index) => {
+        board.innerHTML += `
+            <div class="leader-row">
+                <div>
+                    <span class="leader-rank">#${index + 1}</span>
+                    ${user.username}
+                </div>
+                <div class="leader-xp">${user.xp} XP</div>
+            </div>
+        `;
+    });
+}
+
 async function loadCard() {
-    const category =
-        document.getElementById("category").value;
+    document.getElementById("hint").innerText = "Lädt...";
+    document.getElementById("answer").innerText = "";
+    document.getElementById("front").innerText = "";
+
+    const category = document.getElementById("category").value;
 
     let url = "/next/" + selectedLanguage;
 
@@ -770,18 +883,12 @@ async function loadCard() {
 
     currentCard = data;
 
-    document.getElementById("hint").innerText =
-        data.hint || "";
+    document.getElementById("hint").innerText = data.hint || "";
+    document.getElementById("answer").innerText = data.back || "";
 
-    document.getElementById("answer").innerText =
-        data.back || "";
+    const front = document.getElementById("front");
 
-    const front =
-        document.getElementById("front");
-
-    front.innerText =
-        data.front || "";
-
+    front.innerText = data.front || "";
     front.classList.remove("rtl", "ltr");
 
     if (selectedLanguage === "farsi") {
@@ -790,8 +897,7 @@ async function loadCard() {
         front.classList.add("ltr");
     }
 
-    document.getElementById("card")
-        .classList.remove("flipped");
+    document.getElementById("card").classList.remove("flipped");
 }
 
 function showAnswer() {
@@ -799,8 +905,7 @@ function showAnswer() {
         return;
     }
 
-    document.getElementById("card")
-        .classList.toggle("flipped");
+    document.getElementById("card").classList.toggle("flipped");
 }
 
 function speakWord() {
@@ -810,12 +915,8 @@ function speakWord() {
 
     window.speechSynthesis.cancel();
 
-    const utterance =
-        new SpeechSynthesisUtterance(currentCard.hint);
-
-    utterance.lang =
-        selectedLanguage === "greek" ? "el-GR" : "de-DE";
-
+    const utterance = new SpeechSynthesisUtterance(currentCard.hint);
+    utterance.lang = selectedLanguage === "greek" ? "el-GR" : "de-DE";
     utterance.rate = 0.75;
 
     window.speechSynthesis.speak(utterance);
@@ -824,9 +925,7 @@ function speakWord() {
 async function rate(value) {
     await fetch("/rate", {
         method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
+        headers: {"Content-Type": "application/json"},
         body: JSON.stringify({
             rating: value,
             card: currentCard
@@ -840,7 +939,6 @@ async function rate(value) {
 
         if (!knownCards.includes(currentCard.id)) {
             knownCards.push(currentCard.id);
-            saveKnownCards();
         }
 
         animateSeal("happy");
@@ -865,31 +963,26 @@ async function rate(value) {
         progress.xp = 0;
     }
 
-    saveProgress();
     updateStats();
     checkDailyProgress();
+
+    await saveServerProgress();
+    await loadLeaderboard();
+
     loadCard();
 }
 
 if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register(
-        "/static/service-worker.js"
-    );
+    navigator.serviceWorker.register("/static/service-worker.js");
 }
 
-document.getElementById("language").value =
-    selectedLanguage;
-
-setSealMessage(
-    "Lets go!",
-    "Weiter lernen = stärker werden 💜"
-);
-
 loadDarkMode();
-loadKnownCards();
-loadProgress();
-loadCard();
+checkLogin();
+rotateSealQuote();
 
+setInterval(() => {
+    rotateSealQuote();
+}, 5000);
 </script>
 
 </body>
